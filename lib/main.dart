@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import './screens/product_overview_screen.dart';
+import './screens/product_detail_screen.dart';
+
+import './providers/products.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,17 +13,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Anton'
-
+    return ChangeNotifierProvider(
+      create: (ctx) => Products(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Lato'),
+        home: ProductOverviewScreen(),
+        routes: {ProductDetailScreen.routeName: (ctx) => ProductDetailScreen()},
       ),
-      home: ProductOverviewScreen(),
     );
   }
 }
