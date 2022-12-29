@@ -17,6 +17,8 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final product = Provider.of<Product>(context);
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -38,7 +40,7 @@ class ProductItem extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             Navigator.of(context)
-                .pushNamed(ProductDetailScreen.routeName, arguments:id);
+                .pushNamed(ProductDetailScreen.routeName, arguments: id);
           },
           child: Image.network(
             imageUrl,
