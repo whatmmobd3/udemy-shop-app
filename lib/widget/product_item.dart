@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
+
+import '../providers/product.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem(
-      {Key? key, required this.id, required this.title, required this.imageUrl})
+      {Key? key
+        , required this.id, required this.title, required this.imageUrl
+      })
       : super(key: key);
 
   final String id;
@@ -18,7 +23,7 @@ class ProductItem extends StatelessWidget {
         footer: GridTileBar(
           backgroundColor: Colors.black87,
           leading: IconButton(
-              icon: const Icon(Icons.favorite),
+              icon: const Icon( Icons.favorite),
               onPressed: () {},
               color: Colors.orangeAccent),
           trailing: IconButton(
@@ -33,7 +38,7 @@ class ProductItem extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             Navigator.of(context)
-                .pushNamed(ProductDetailScreen.routeName, arguments: id);
+                .pushNamed(ProductDetailScreen.routeName, arguments:id);
           },
           child: Image.network(
             imageUrl,
